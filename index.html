@@ -1,13 +1,36 @@
 <!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>HELLO</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello word</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .result {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
-<body style="background-color: #0C0C0C">
-<div class="content channel-page">
-  hello
-</div>
+<body> 
+    <div class="result" id="result"></div>
+
+    <script type="text/javascript">
+        function isWeChat() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return userAgent.includes('micromessenger');
+        }
+
+        const resultElement = document.getElementById('result');
+        if (isWeChat()) {
+            resultElement.textContent = "当前浏览器为微信浏览器";
+        } else {
+            resultElement.textContent = "当前浏览器不是微信浏览器";
+        }
+    </script>
 </body>
 </html>
