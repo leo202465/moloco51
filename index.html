@@ -8,26 +8,31 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
+            margin: 0px;
+            padding:0px;
         }
         .result{background-color: #fff}
+        
+        img {
+            max-width: 100%; /* 确保图片自适应屏幕 */
+            height: auto;
+        }
     </style>
 </head>
 
-<body style="background-color: #0C0C0C"> 
-    <div class="result" id="result"></div>
-
+<body style="background-color: #000"> 
+    <div class="content channel-page" id="wechat"><img src="./weixin-download-layer.png" /></div>
     <script type="text/javascript">
         function isWeChat() {
             const userAgent = navigator.userAgent.toLowerCase();
             return userAgent.includes('micromessenger');
         }
 
-        const resultElement = document.getElementById('result');
+        const wechat = document.getElementById('wechat');
         if (isWeChat()) {
-            resultElement.innerHTML = '<div class="content channel-page"><img src="./weixin-download-layer.png" width="100%"/></div>';
+            wechat.style.display === 'block';
         } else {
-            resultElement.textContent = "当前浏览器不是微信浏览器";
+            wechat.style.display === 'none';
         }
     </script>
 </body>
