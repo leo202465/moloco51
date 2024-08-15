@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>hello word</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0px;
+            padding:0px;
+        }
+        .result{background-color: #fff}
+        
+        img {
+            max-width: 100%; /* 确保图片自适应屏幕 */
+            height: auto;
+        }
+    </style>
+</head>
+
+<body style="background-color: #000"> 
+    <div class="content channel-page" id="wechat" style="display:none"><img src="./weixin-download-layer.png" /></div>
+    <script type="text/javascript">
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            const queryParams = {};
+            
+            for (const [key, value] of params.entries()) {
+                queryParams[key] = value;
+            }
+            
+            return queryParams;
+        }
+        function isWeChat() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return userAgent.includes('micromessenger');
+        }
+
+        // 使用示例
+        const queryParams = getQueryParams();
+        const wechat = document.getElementById('wechat');
+        if (isWeChat()) {
+            wechat.style.display = 'block';
+        } else {
+            wechat.style.display = 'none';
+            top.window.location.href=queryParams['url']
+            console.log(queryParams)
+        }
+    </script>
+</body>
+</html>
